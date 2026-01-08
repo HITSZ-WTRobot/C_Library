@@ -5,12 +5,12 @@ file(GLOB SRC_FILES *.c)
 file(GLOB HDR_FILES *.h)
 
 # export include dir
-set(EXPORT_DIR ${CMAKE_CURRENT_BINARY_DIR}/libs)
+set(EXPORT_DIR ${CMAKE_CURRENT_BINARY_DIR}/include)
 file(MAKE_DIRECTORY ${EXPORT_DIR})
 
 foreach(HDR IN LISTS HDR_FILES)
     get_filename_component(HDR_NAME ${HDR} NAME)
-    configure_file(${HDR} ${EXPORT_DIR}/${HDR_NAME} COPYONLY)
+    configure_file(${HDR} ${EXPORT_DIR}/libs/${HDR_NAME} COPYONLY)
 endforeach()
 
 add_library(libs_mit_pd STATIC ${SRC_FILES})
