@@ -13,11 +13,9 @@ foreach(HDR IN LISTS HDR_FILES)
     configure_file(${HDR} ${EXPORT_DIR}/${HDR_NAME} COPYONLY)
 endforeach()
 
-add_library(libs_$$NAME$$ INTERFACE)
+add_library(libs_$$NAME$$ STATIC ${SRC_FILES})
 
-target_include_directories(libs_$$NAME$$ INTERFACE ${EXPORT_DIR})
-
-target_sources(libs_$$NAME$$ INTERFACE ${SRC_FILES})
+target_include_directories(libs_$$NAME$$ PUBLIC ${EXPORT_DIR})
 
 # link default libraries
-target_link_libraries(libs_$$NAME$$ INTERFACE m)
+target_link_libraries(libs_$$NAME$$ PUBLIC m)

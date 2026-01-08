@@ -13,11 +13,9 @@ foreach(HDR IN LISTS HDR_FILES)
     configure_file(${HDR} ${EXPORT_DIR}/${HDR_NAME} COPYONLY)
 endforeach()
 
-add_library(libs_pid_motor INTERFACE)
+add_library(libs_pid_motor STATIC ${SRC_FILES})
 
-target_include_directories(libs_pid_motor INTERFACE ${EXPORT_DIR})
-
-target_sources(libs_pid_motor INTERFACE ${SRC_FILES})
+target_include_directories(libs_pid_motor PUBLIC ${EXPORT_DIR})
 
 # link default libraries
-target_link_libraries(libs_pid_motor INTERFACE m)
+target_link_libraries(libs_pid_motor PUBLIC m)

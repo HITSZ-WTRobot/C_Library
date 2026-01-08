@@ -13,11 +13,9 @@ foreach(HDR IN LISTS HDR_FILES)
     configure_file(${HDR} ${EXPORT_DIR}/${HDR_NAME} COPYONLY)
 endforeach()
 
-add_library(libs_mit_pd INTERFACE)
+add_library(libs_mit_pd STATIC ${SRC_FILES})
 
-target_include_directories(libs_mit_pd INTERFACE ${EXPORT_DIR})
-
-target_sources(libs_mit_pd INTERFACE ${SRC_FILES})
+target_include_directories(libs_mit_pd PUBLIC ${EXPORT_DIR})
 
 # link default libraries
-target_link_libraries(libs_mit_pd INTERFACE m)
+target_link_libraries(libs_mit_pd PUBLIC m)
