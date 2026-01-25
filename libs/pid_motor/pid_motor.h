@@ -66,6 +66,16 @@ typedef struct
 void MotorPID_Init(MotorPID_t* hpid, MotorPID_Config_t pid_config);
 void MotorPID_Calculate(MotorPID_t* hpid);
 
+static void MotorPID_Reset(MotorPID_t* pid)
+{
+    pid->ref         = 0.0f;
+    pid->fdb         = 0.0f;
+    pid->cur_error   = 0.0f;
+    pid->prev_error1 = 0.0f;
+    pid->prev_error2 = 0.0f;
+    pid->output      = 0.0f;
+}
+
 #ifdef __cplusplus
 }
 #endif

@@ -63,6 +63,15 @@ typedef struct
 void PD_Init(PD_t* pd, const PD_Config_t* config);
 void PD_Calculate(PD_t* pd);
 
+static void PD_Reset(PD_t* pd)
+{
+    pd->ref        = 0.0f;
+    pd->fdb        = 0.0f;
+    pd->cur_error  = 0.0f;
+    pd->prev_error = 0.0f;
+    pd->output     = 0.0f;
+}
+
 #ifdef __cplusplus
 }
 #endif

@@ -45,6 +45,15 @@ typedef struct
 void MIT_PD_Init(MIT_PD_t* pd, const MIT_PD_Config_t* config);
 void MIT_PD_Calculate(MIT_PD_t* pd);
 
+static void MIT_PD_Reset(MIT_PD_t* pd)
+{
+    pd->p_ref  = 0.0f;
+    pd->p_fdb  = 0.0f;
+    pd->v_ref  = 0.0f;
+    pd->v_fdb  = 0.0f;
+    pd->output = 0.0f;
+}
+
 #ifdef __cplusplus
 }
 #endif
